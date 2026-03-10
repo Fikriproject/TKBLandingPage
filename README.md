@@ -3,8 +3,7 @@
 Landing page resmi untuk produk **Tape Ketan Bakung**, kuliner fermentasi tradisional khas Cirebon yang terbuat dari beras ketan dan daun katuk.
 
 ## 🌐 Live Demo
-[[https://tkblandingpage.netlify.app](https://tapeketanbakungcirebon.netlify.app/)](https://tkblandingpage.netlify.app) *(update link setelah deploy)*
-
+[https://tapeketanbakungcirebon.netlify.app/](https://tapeketanbakungcirebon.netlify.app/) 
 ---
 
 ## 📋 Fitur Halaman
