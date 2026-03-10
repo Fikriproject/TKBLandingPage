@@ -1,0 +1,53 @@
+@use "sass:math";
+
+@mixin fluid-text($max: 48) {
+  $desktop-max: math.round(if($max <=16, $max * 1.25, if($max <=32, $max * 1.3, $max * 1.2)));
+  $mobile-min: math.round(if($max <=18, 14, $max * 0.75));
+  font-size: clamp(#{$mobile-min}px, #{math.div($max, 480) * 100}vw, #{$max}px);
+
+  @media (min-width: 1024px) {
+    font-size: clamp(16px, #{math.div($desktop-max, 1440) * 100}vw, #{$desktop-max}px);
+  }
+}
+
+
+
+@mixin reset-link {
+  color: inherit;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin reset-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  }
+
+  @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin square($size) {
+  width: $size;
+  aspect-ratio: 1;
+}

@@ -1,0 +1,124 @@
+@use "../media" as *;
+@use "../mixins" as *;
+
+.subscribe {
+  text-align: center;
+  position: relative;
+
+  &__wrapper {
+    padding: 48px 40px;
+    border-radius: 20px;
+    max-width: 860px;
+    background-color: var(--color-accent);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-light);
+    margin-bottom: 12px;
+  }
+
+  &__text {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 32px;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 50px;
+    padding: 0 18px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-light);
+    font-size: 15px;
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-light);
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  textarea.subscribe__input {
+    height: auto;
+    min-height: 110px;
+    padding: 14px 18px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+
+  &__button {
+    height: 52px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-light);
+    color: var(--color-accent);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s, transform 0.15s;
+    margin-top: 4px;
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@include tablet {
+  .subscribe {
+    &__wrapper {
+      padding: 36px 24px;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__form {
+      max-width: 100%;
+    }
+  }
+}
+
+.subscribe::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-dark);
+  z-index: -1;
+}

@@ -1,0 +1,100 @@
+@use "../media" as *;
+@use "../mixins" as *;
+
+.gizi {
+    padding: 80px 0;
+    background-color: var(--color-accent-light);
+
+    &__header {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    &__title {
+        @include fluid-text(36);
+        font-weight: 700;
+        margin-bottom: 12px;
+
+        span {
+            color: var(--color-accent);
+        }
+    }
+
+    &__subtitle {
+        font-size: 16px;
+        color: var(--color-gray);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+}
+
+.gizi-card {
+    background: var(--color-light);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    &__icon {
+        font-size: 40px;
+        line-height: 1;
+    }
+
+    &__title {
+        @include fluid-text(18);
+        font-weight: 700;
+        color: var(--color-dark);
+    }
+
+    &__kandungan {
+        font-size: 13px;
+        color: var(--color-accent);
+        background: rgba(var(--color-accent-rgb, 34, 139, 34), 0.08);
+        border-left: 3px solid var(--color-accent);
+        padding: 8px 12px;
+        border-radius: 0 8px 8px 0;
+        line-height: 1.5;
+    }
+
+    &__manfaat {
+        font-size: 14px;
+        color: var(--color-gray);
+        line-height: 1.7;
+        flex: 1;
+    }
+}
+
+@include tablet {
+    .gizi__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@include mobile {
+    .gizi {
+        padding: 60px 0;
+    }
+
+    .gizi__list {
+        grid-template-columns: 1fr;
+    }
+
+    .gizi__title {
+        @include fluid-text(28);
+    }
+}

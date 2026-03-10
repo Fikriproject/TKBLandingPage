@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <title>Tape Ketan Bakung Cirebon</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+      backdrop-filter: blur(6px);
+      animation: lbFadeIn 0.2s ease;
+    }
+
+    #lightbox.open {
+      display: flex;
+    }
+
+    #lightbox__img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      object-fit: contain;
+      animation: lbZoomIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: default;
+    }
+
+    #lightbox__caption {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 6px 16px;
+      border-radius: 20px;
+      max-width: 80vw;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #lightbox__close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      color: #fff;
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    #lightbox__close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lb-trigger {
+      cursor: zoom-in;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .lb-trigger:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    @keyframes lbFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes lbZoomIn {
+      from {
+        transform: scale(0.85);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__inner container">
+      <a href="/" class="header__logo logo">
+        <img src="images/logo.png" alt="Tape Ketan Bakung Cirebon" />
+      </a>
+      <nav class="header__menu hidden-mobile" aria-label="Main navigation">
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a href="#beranda" class="header__menu-link">Beranda</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#manfaat-gizi" class="header__menu-link">Manfaat Gizi</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#legalitas" class="header__menu-link">Legalitas</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#menu" class="header__menu-link">Menu</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#edu-wisata" class="header__menu-link">Edu Wisata</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#kontak" class="header__menu-link">Kontak</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="https://wa.me/6282119123193" target="_blank" rel="noopener noreferrer"
+        class="header__button button hidden-mobile">Pesan Sekarang</a>
+      <button class="button__burger-menu burger-button visible-mobile" type="button" aria-controls="mobileOverlay"
+        aria-label="Open navigation menu" onclick="mobileOverlay.showModal()">
+        <span class="visually-hidden">Open navigation menu</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="hero" id="beranda">
+      <div class="container hero__container">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            Good <span>Food</span> & Taste From preserved culture
+          </h1>
+
+          <div class="hero__description-wrapper">
+            <p class="hero__description">
+              Tape Ketan Bakung adalah kuliner fermentasi tradisional khas Cirebon yang telah diwariskan turun-temurun.
+              Terbuat dari beras ketan pilihan yang dipadukan dengan daun katuk (Sauropus androgynus), menghasilkan cita
+              rasa manis-asam yang khas dengan aroma fermentasi yang menggugah selera.
+            </p>
+            <p class="hero__description">
+              Dibuat dengan proses fermentasi alami tanpa pengawet buatan, Tape Ketan Bakung hadir sebagai pangan lokal
+              fungsional yang memadukan kearifan tradisi dengan nilai gizi tinggi — menjadikannya lebih dari sekadar
+              camilan, tetapi warisan budaya Cirebon yang patut dilestarikan.
+            </p>
+          </div>
+
+          <div class="hero__buttons">
+            <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20Pie%20Tape%20Khas%20Cirebon"
+              class="hero__order-button">Order Now</a>
+            <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20Pie%20Tape%20Khas%20Cirebon"
+              class="hero__get-button">Get the Food</a>
+          </div>
+        </div>
+
+        <img src="images/hero-photo.png" alt="Tape Ketan Bakung Cirebon" class="hero__image" width="617" height="393"
+          loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <!-- Manfaat Gizi -->
+  <section class="gizi" id="manfaat-gizi">
+    <div class="container">
+      <!-- <div class="container__title"><span>Kandungan</span></div> -->
+      <header class="gizi__header">
+        <h2 class="gizi__title">Manfaat <span>Gizi</span> Tape Ketan Bakung</h2>
+        <p class="gizi__subtitle">Lebih dari sekadar camilan — setiap gigitan mengandung nutrisi alami hasil fermentasi
+          tradisional khas Cirebon.</p>
+      </header>
+
+      <div class="gizi__list">
+
+        <div class="gizi-card">
+          <div class="gizi-card__icon">🦠</div>
+          <h3 class="gizi-card__title">Sumber Probiotik Alami</h3>
+          <p class="gizi-card__kandungan"><strong>Kandungan:</strong> Bakteri asam laktat &amp; ragi (Saccharomyces
+            cerevisiae) dari proses fermentasi.</p>
+          <p class="gizi-card__manfaat">Sangat baik untuk kesehatan pencernaan. Probiotik membantu menyeimbangkan
+            mikrobioma usus, melancarkan buang air besar, dan meningkatkan sistem kekebalan tubuh secara alami.</p>
+        </div>
+
+        <div class="gizi-card">
+          <div class="gizi-card__icon">⚡</div>
+          <h3 class="gizi-card__title">Karbohidrat &amp; Energi Cepat</h3>
+          <p class="gizi-card__kandungan"><strong>Kandungan:</strong> Gula sederhana (glukosa &amp; maltosa) hasil
+            pemecahan karbohidrat kompleks oleh ragi.</p>
+          <p class="gizi-card__manfaat">Karena strukturnya telah dipecah oleh fermentasi, tubuh dapat menyerap energi
+            jauh lebih cepat. Cocok untuk memulihkan stamina dan memberikan dorongan energi instan.</p>
+        </div>
+
+        <div class="gizi-card">
+          <div class="gizi-card__icon">🧬</div>
+          <h3 class="gizi-card__title">Vitamin B Kompleks (B1)</h3>
+          <p class="gizi-card__kandungan"><strong>Kandungan:</strong> Kadar Vitamin B1 (Tiamin) meningkat signifikan
+            selama fermentasi dibanding ketan biasa.</p>
+          <p class="gizi-card__manfaat">Vitamin B1 vital untuk kesehatan sistem saraf, metabolisme karbohidrat menjadi
+            energi, serta mendukung fungsi otot dan jantung agar tetap optimal.</p>
+        </div>
+
+        <div class="gizi-card">
+          <div class="gizi-card__icon">💪</div>
+          <h3 class="gizi-card__title">Mineral: Zat Besi &amp; Kalsium</h3>
+          <p class="gizi-card__kandungan"><strong>Kandungan:</strong> Fermentasi menurunkan asam fitat sehingga
+            penyerapan mineral oleh tubuh meningkat (bioavailabilitas tinggi).</p>
+          <p class="gizi-card__manfaat">Zat besi mencegah anemia dengan mendukung produksi sel darah merah. Kalsium
+            berperan penting dalam memelihara kepadatan dan kesehatan tulang.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="legalitas">
+    <div class="container">
+      <header class="services__header">
+        <h2 class="services__title">Standar Kualitas <span>& Legalitas Kami</span></h2>
+        <p>
+          Kami berkomitmen untuk menyajikan produk yang tidak hanya lezat, tetapi juga aman dan terjamin. Seluruh proses
+          produksi kami telah memenuhi standar legalitas dan sertifikasi resmi dari lembaga terkait..
+        </p>
+      </header>
+
+      <div class="services__list">
+        <article class="service-card">
+          <div class="service-card__image">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+
+          <h3 class="service-card__title">P-IRT</h3>
+
+          <p class="service-card__text">
+            Pangan Industri Rumah Tangga yang menjamin keamanan produk makanan dari pengelolaan industri rumahan secara
+            resmi.
+          </p>
+
+          <a href="images/spirt.pdf" class="service-card__link">Lihat</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__image">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <path d="M8 14h.01"></path>
+              <path d="M12 14h4"></path>
+              <path d="M8 18h.01"></path>
+              <path d="M12 18h4"></path>
+            </svg>
+          </div>
+
+          <h3 class="service-card__title">NIB</h3>
+
+          <p class="service-card__text">
+            Nomor Induk Berusaha sebagai legalitas dan identitas resmi pelaku usaha dalam menjalankan proses produksi
+            makanan ini.
+          </p>
+
+          <a href="images/NIB.pdf" class="service-card__link">Lihat</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__image">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+          </div>
+
+          <h3 class="service-card__title">Halal</h3>
+
+          <p class="service-card__text">
+            Sertifikasi Halal resmi yang memastikan bahwa produk Tape Bakung diproduksi sesuai dengan syariat agama dan
+            aman konsumsi.
+          </p>
+
+          <a href="images/sh.pdf" class="service-card__link">Lihat</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__image">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 4 13a7 7 0 0 1 7-7h7v7a7 7 0 0 1-7 7z"></path>
+              <path d="M11 20v-5"></path>
+            </svg>
+          </div>
+
+          <h3 class="service-card__title">CHSE</h3>
+
+          <p class="service-card__text">
+            Sertifikasi standar keunggulan (Cleanliness, Health, Safety, and Environmental Sustainability) untuk
+            pengelolaan bersih dan aman.
+          </p>
+
+          <a href="images/CHSE.pdf" class="service-card__link">Lihat</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__image">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+              </path>
+            </svg>
+          </div>
+
+          <h3 class="service-card__title">Quality Food</h3>
+
+          <p class="service-card__text">
+            Produksi olahan beras ketan khas Cirebon dengan kualitas terbaik, rasa manis alami, dan kesegaran yang
+            terjaga.
+          </p>
+
+          <a href="#" class="service-card__link">Lihat</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="container__title"><span>Menu</span></div>
+      <header class="menu__header">
+        <h2 class="menu__title">Choose Your <span>Taste</span></h2>
+      </header>
+
+      <div class="menu__list">
+        <article class="menu-card">
+          <img src="images/pietape.jpeg" alt="Pie Tape Khas Cirebon" class="menu-card__image" width="368" height="280"
+            loading="lazy" />
+
+          <div class="menu-card__rating">★★★★★</div>
+
+          <h3 class="menu-card__title">Pie Tape Khas Cirebon</h3>
+
+          <p class="menu-card__description">
+            Perpaduan unik antara kue pie dengan isian tape ketan bakung khas Cirebon. Tekstur kulit pie yang renyah
+            berpadu sempurna dengan manisnya tape yang legit dan sedikit asam alami. Cocok sebagai oleh-oleh atau
+            camilan istimewa.
+          </p>
+
+          <div class="menu-card__footer">
+            <span class="menu-card__price">Rp.35.000,00</span>
+            <div class="menu-card__actions">
+              <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20*Pie%20Tape%20Khas%20Cirebon*%20(Rp.50.000,00).%20Mohon%20informasi%20ketersediaannya.%20Terima%20kasih!"
+                class="menu-card__order-button" target="_blank" rel="noopener noreferrer">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img src="images/tape.jpeg" alt="Tape 800Gram" class="menu-card__image" width="368" height="280"
+            loading="lazy" />
+
+          <div class="menu-card__rating">★★★★★</div>
+
+          <h3 class="menu-card__title">Tape 800Gram</h3>
+
+          <p class="menu-card__description">
+            Tape ketan bakung porsi besar 800 gram, dibuat dari beras ketan pilihan yang difermentasi bersama daun
+            katuk. Rasa manis legit alami dengan aroma khas yang menggugah selera. Kemasan higienis, tahan lama.
+          </p>
+
+          <div class="menu-card__footer">
+            <span class="menu-card__price">Rp.30.000,00</span>
+            <div class="menu-card__actions">
+              <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20*Tape%20800%20Gram*%20(Rp.30.000,00).%20Mohon%20informasi%20ketersediaannya.%20Terima%20kasih!"
+                class="menu-card__order-button" target="_blank" rel="noopener noreferrer">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img src="images/tape2.jpeg" alt="Tape 400Gram" class="menu-card__image" width="368" height="280"
+            loading="lazy" />
+
+          <div class="menu-card__rating">★★★★★</div>
+
+          <h3 class="menu-card__title">Tape 400Gram</h3>
+
+          <p class="menu-card__description">
+            Tape ketan bakung porsi 400 gram, pilihan pas untuk keluarga kecil atau dicoba pertama kali. Dibuat dari
+            beras ketan dan daun katuk segar, kaya gizi dengan rasa manis alami yang khas Cirebon.
+          </p>
+
+          <div class="menu-card__footer">
+            <span class="menu-card__price">Rp.18.000,00</span>
+            <div class="menu-card__actions">
+              <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20*Tape%20400%20Gram*%20(Rp.18.000,00).%20Mohon%20informasi%20ketersediaannya.%20Terima%20kasih!"
+                class="menu-card__order-button" target="_blank" rel="noopener noreferrer">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img src="images/tape3.jpeg" alt="Tape Isi 25pcs" class="menu-card__image" width="368" height="280"
+            loading="lazy" />
+
+          <div class="menu-card__rating">★★★★★</div>
+
+          <h3 class="menu-card__title">Tape Isi 25pcs</h3>
+
+          <p class="menu-card__description">
+            Paket tape ketan bakung isi 25 pcs dalam kemasan satuan. Praktis dibawa sebagai oleh-oleh, snack kantor,
+            atau acara. Setiap potongan manis, lembut, dan kaya manfaat dari kandungan daun katuk.
+          </p>
+
+          <div class="menu-card__footer">
+            <span class="menu-card__price">Rp.30.000,00</span>
+            <div class="menu-card__actions">
+              <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20*Tape%20Isi%2025%20Pcs*%20(Rp.30.000,00).%20Mohon%20informasi%20ketersediaannya.%20Terima%20kasih!"
+                class="menu-card__order-button" target="_blank" rel="noopener noreferrer">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img src="images/tapebulat.jpeg" alt="" class="menu-card__image" width="368" height="280" loading="lazy" />
+
+          <div class="menu-card__rating">★★★★★</div>
+
+          <h3 class="menu-card__title">Tape Bulat Bulat</h3>
+
+          <p class="menu-card__description">
+            Tape ketan bakung berbentuk bulat yang lucu dan menggemaskan. Teksturnya lembut, rasanya legit manis dengan
+            sedikit sentuhan asam tape yang khas. Cocok untuk hampers, acara ulang tahun, atau hadiah.
+          </p>
+
+          <div class="menu-card__footer">
+            <span class="menu-card__price">Rp.57.000,00</span>
+            <div class="menu-card__actions">
+              <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20*Tape%20Bulat%20Bulat*%20(Rp.57.000,00).%20Mohon%20informasi%20ketersediaannya.%20Terima%20kasih!"
+                class="menu-card__order-button" target="_blank" rel="noopener noreferrer">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img src="images/tapedus.jpeg" alt="Tape Pincukan Isi 40" class="menu-card__image" width="368" height="280"
+            loading="lazy" />
+
+          <div class="menu-card__rating">★★★★★</div>
+
+          <h3 class="menu-card__title">Tape Pincukan Isi 40</h3>
+
+          <p class="menu-card__description">
+            Tape ketan bakung disajikan dalam pincukan daun pisang, isi 40 pcs. Cara penyajian tradisional yang menambah
+            cita rasa autentik. Pilihan tepat untuk acara besar, arisan, atau souvenir khas Cirebon.
+          </p>
+
+          <div class="menu-card__footer">
+            <span class="menu-card__price">Rp.55.000,00</span>
+            <div class="menu-card__actions">
+              <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20memesan%20*Tape%20Pincukan%20Isi%2040*%20(Rp.55.000,00).%20Mohon%20informasi%20ketersediaannya.%20Terima%20kasih!"
+                class="menu-card__order-button" target="_blank" rel="noopener noreferrer">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="menu__footer">
+        <a href="#" class="menu__button">
+          See More
+          <svg class="menu__arrow" width="20" height="12" viewBox="0 0 20 12" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Edu Wisata Kuliner -->
+  <section class="chef" id="edu-wisata">
+    <div class="container">
+      <header class="chef__header">
+        <h2 class="chef__title">Edu <span>Wisata </span>Kuliner</h2>
+        <p>
+          Destinasi wisata kuliner yang mana para wisatawan dapat merasakan langsung experience untuk melihat,
+          merasakan, mencoba bahkan membuat secara langsung kuliner khas cirebon bernama tape ketan bakung.
+        </p>
+      </header>
+
+      <div class="chef__list">
+        <article class="chef-card">
+          <img src="images/edu.jpeg" alt="Vishal Khan" class="chef-card__image" width="368" height="441"
+            loading="lazy" />
+          <div class="chef-card__info">
+            <h3 class="chef-card__name">Edu Wisata Kuliner</h3>
+            <p class="chef-card__position">Tape Ketan Bakung</p>
+          </div>
+        </article>
+
+        <article class="chef-card">
+          <img src="images/anak.jpeg" alt="" class="menu-card__image" width="368" height="280" loading="lazy" />
+          <h3 class="menu-card__title">Anak Anak SD Kalikoa</h3>
+
+          <p class="menu-card__description">
+            "Seru bangett!!.., di sini kami banyak nyobain hal baru dari mulai cara membuat step by step hingga jadi
+            tempe bakung yang sangat khas dari cirebon ini."
+          </p>
+          <p class="menu-card__description">
+            "Di sini kami juga nyobain banyak tempe bakung dari yang paling legend original sampe yang paling enak dan
+            punya sensasi beda gitu tuh yang Pie Tape nya."
+          </p>
+        </article>
+
+        <article class="chef-card">
+          <img src="images/bapa.jpeg" alt="" class="menu-card__image" width="368" height="280" loading="lazy" />
+
+          <h3 class="menu-card__title">Mentor Edu Wisata</h3>
+
+          <p class="menu-card__description">
+            "Harapan nya semoga makin banyak yang tertarik untuk mulai melestarikan makanan khas yang
+            Cirebon yang sudah ada dari dulu. Ayo kita kasih tau seluruh indonesia bahwa cirebon punya makanan khas yang
+            enak dan unik juga kaya dengan
+            gizi dan nutrisi yang sangat cocok untuk menjaga daya tahan tubuh dan banyak lagi."
+          </p>
+
+          <div class="menu-card__footer">
+            <span class="menu-card__price">Rp.30.000,00 - 35.000,00</span>
+            <div class="menu-card__actions">
+              <a href="https://wa.me/6282119123193?text=Halo,%20saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20*Paket%20Edu%20Wisata%20Kuliner%20Tape%20Ketan%20Bakung*%20(Rp.30.000,00%20-%2035.000,00).%20Mohon%20informasinya.%20Terima%20kasih!"
+                class="menu-card__order-button" target="_blank" rel="noopener noreferrer">
+                Order Now
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="review">
+    <div class="container">
+      <!-- <div class="review__wrapper">
+        <div class="review__image">
+          <img src="images/jhonson.png" alt="Jonson Roy" width="340" height="480" loading="lazy" />
+        </div>
+
+        <div class="review__card">
+          <h3 class="review__name">Jonson Roy</h3>
+          <p class="review__role">Food lover</p>
+
+          <div class="review__rating" aria-label="5 out of 5 stars">
+            ★ ★ ★ ★ ★
+          </div>
+
+          <p class="review__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maece nas
+            in cursus at tincidunt sem. Ipsum tristique volutpat nudu
+            elementum et, vitae purus a scelerisque massa. Cras sit et
+            tristique potenti purus. Pharetra vestibulum, nisl feugiat at
+            commodo diam neque amet.
+          </p>
+
+          <div class="review__controls">
+            <button type="button" aria-label="Previous review">←</button>
+            <button type="button" aria-label="Next review">→</button>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <section class="subscribe" id="kontak">
+    <div class="container">
+      <div class="subscribe__wrapper">
+        <div class="subscribe__content">
+          <h2 class="subscribe__title">Kirim Pesan Pada Kami</h2>
+          <p class="subscribe__text">
+            Punya pertanyaan atau ingin memesan? Isi form di samping dan pesan
+            Anda akan langsung dikirim ke email kami.
+          </p>
+        </div>
+
+        <form class="subscribe__form" id="contactForm" onsubmit="kirimPesan(event)">
+          <input type="text" id="namaPengirim" class="subscribe__input" placeholder="Nama Anda..." required />
+          <input type="email" id="emailPengirim" class="subscribe__input" placeholder="Email Anda..." required />
+          <textarea id="pesanIsi" class="subscribe__input" placeholder="Tulis pesan Anda..." rows="3" required
+            style="resize:vertical; padding: 12px;"></textarea>
+          <button class="subscribe__button" type="submit">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function kirimPesan(e) {
+      e.preventDefault();
+      var nama = document.getElementById('namaPengirim').value;
+      var email = document.getElementById('emailPengirim').value;
+      var pesan = document.getElementById('pesanIsi').value;
+
+      var subject = encodeURIComponent('Pesan dari ' + nama + ' (' + email + ')');
+      var body = encodeURIComponent('Nama: ' + nama + '\nEmail: ' + email + '\n\nPesan:\n' + pesan);
+
+      window.open('mailto:tapeketanbakungcirebon@gmail.com?subject=' + subject + '&body=' + body);
+
+      document.getElementById('contactForm').reset();
+    }
+  </script>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col footer__col-brand">
+          <h3 class="footer__logo">Tape Ketan Bakung</h3>
+          <p class="footer__description">
+            Kuliner khas Cirebon dari beras ketan dan daun katuk. Sehat, lezat,
+            dan kaya gizi untuk menjaga daya tahan tubuh.
+          </p>
+
+          <div class="footer__social">
+            <a href="https://www.facebook.com/Tape-Ketan-Bakung-Cirebon" class="footer__social-link" target="_blank"
+              rel="noopener noreferrer"><img src="/images/icons-social/fb.svg" alt="Facebook" /></a>
+            <a href="https://www.instagram.com/tapeketanbakungcirebon" class="footer__social-link" target="_blank"
+              rel="noopener noreferrer"><img src="/images/icons-social/ig.svg" alt="Instagram" /></a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Sosial Media</h4>
+          <ul class="footer__list">
+            <li><a href="https://www.instagram.com/tapeketanbakungcirebon" target="_blank"
+                rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.facebook.com/Tape-Ketan-Bakung-Cirebon" target="_blank"
+                rel="noopener noreferrer">Facebook</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Our Menu</h4>
+          <ul class="footer__list">
+            <li><a href="#">Tape Ketan</a></li>
+            <li><a href="#">Pie Tape</a></li>
+            <li><a href="#">Edu Wisata</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Get In Touch</h4>
+          <ul class="footer__contact">
+            <li>
+              <a href="https://wa.me/6282119123193" target="_blank" rel="noopener noreferrer">📱 0821-1912-3193</a>
+            </li>
+            <li>
+              <a href="mailto:tapeketanbakungcirebon@gmail.com">✉️ tapeketanbakungcirebon@gmail.com</a>
+            </li>
+            <li>
+              <a href="https://maps.google.com/?q=Bakung+Kidul,+Kec.+Jamblang,+Kabupaten+Cirebon" target="_blank"
+                rel="noopener noreferrer">📍 Bakung Kidul, Kec. Jamblang, Kabupaten Cirebon, Jawa Barat 45156</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">© 2026 Tape Ketan Bakung Cirebon. All Rights Reserved.</div>
+    </div>
+  </footer>
+  <!-- ДОБАВИТЬ МИКСИНЫ -->
+
+  <dialog class="mobile-overlay visible-mobile" id="mobileOverlay">
+    <form class="mobile-overlay__close-button-wrapper" method="dialog">
+      <button class="mobile-overlay__close-button cross-button" type="submit">
+        <span class="visually-hidden">Close menu</span>
+      </button>
+    </form>
+    <nav class="mobile-overlay__nav" aria-label="Mobile navigation">
+      <ul class="mobile-overlay__list">
+        <li class="mobile-overlay__item">
+          <a href="#beranda" class="mobile-overlay__link" onclick="mobileOverlay.close()">Beranda</a>
+        </li>
+        <li class="mobile-overlay__item">
+          <a href="#manfaat-gizi" class="mobile-overlay__link" onclick="mobileOverlay.close()">Manfaat Gizi</a>
+        </li>
+        <li class="mobile-overlay__item">
+          <a href="#legalitas" class="mobile-overlay__link" onclick="mobileOverlay.close()">Legalitas</a>
+        </li>
+        <li class="mobile-overlay__item">
+          <a href="#menu" class="mobile-overlay__link" onclick="mobileOverlay.close()">Menu</a>
+        </li>
+        <li class="mobile-overlay__item">
+          <a href="#edu-wisata" class="mobile-overlay__link" onclick="mobileOverlay.close()">Edu Wisata</a>
+        </li>
+        <li class="mobile-overlay__item">
+          <a href="#kontak" class="mobile-overlay__link" onclick="mobileOverlay.close()">Kontak</a>
+        </li>
+        <li class="mobile-overlay__item">
+          <a href="https://wa.me/6282119123193" target="_blank" rel="noopener noreferrer"
+            class="mobile-overlay__link">Pesan Sekarang</a>
+        </li>
+      </ul>
+    </nav>
+  </dialog>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau gambar">
+    <span id="lightbox__close" aria-label="Tutup">&times;</span>
+    <img id="lightbox__img" src="" alt="" />
+    <div id="lightbox__caption"></div>
+  </div>
+
+  <script>
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox__img');
+      var lbCaption = document.getElementById('lightbox__caption');
+      var lbClose = document.getElementById('lightbox__close');
+
+      // Selectors to SKIP (logos, icons, social images)
+      var skipSelectors = [
+        '.header__logo img',
+        '.footer__social-link img',
+        '.service-card__image img',
+        '.service-card__image svg',
+        'img[src*="icons"]',
+        'img[src*="svg"]',
+        'img[width="18"]',
+        'img[width="14"]',
+      ];
+
+      function shouldSkip(img) {
+        return skipSelectors.some(function (sel) {
+          try { return img.matches(sel); } catch (e) { return false; }
+        });
+      }
+
+      function openLightbox(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lbCaption.textContent = alt || '';
+        lbCaption.style.display = alt ? 'block' : 'none';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lbImg.focus();
+      }
+
+      function closeLightbox() {
+        lb.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      // Attach to all content images
+      document.querySelectorAll('img').forEach(function (img) {
+        if (shouldSkip(img)) return;
+        img.classList.add('lb-trigger');
+        img.setAttribute('tabindex', '0');
+        img.addEventListener('click', function () {
+          openLightbox(img.src, img.alt);
+        });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(img.src, img.alt);
+          }
+        });
+      });
+
+      // Close on overlay click
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb || e.target === lbClose) closeLightbox();
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+      });
+
+      // Stop click on image from closing
+      lbImg.addEventListener('click', function (e) { e.stopPropagation(); });
+    })();
+  </script>
+</body>
+
+</html>
